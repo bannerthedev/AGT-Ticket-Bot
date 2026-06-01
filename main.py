@@ -2,8 +2,13 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
+import os
+import dotenv
+from dotenv import load_dotenv
 
-TOKEN = "MTUxMDgwMTI5NjYxMjEzMDg2Ng.GgZ1hS.gBB8eSDMAhTD2V7uoBSurtkIn2lSTa9aS5MCbI"
+load_dotenv()
+
+
 GUILD_ID = 1495226742124843048  # Guild ID where command registers
 # Add as many staff role IDs as you want here:
 STAFF_ROLE_IDS = [1497021905536811058, 1495226875482734614, 1495240020720615655, 1495493248259719321, 1496636262642352250, 1497012056384077895 ]  # example: [role_id1, role_id2, ...]
@@ -133,4 +138,4 @@ async def on_ready():
     await tree.sync(guild=discord.Object(id=GUILD_ID))
     print(f"Logged in as {bot.user}")
 
-bot.run(TOKEN)
+bot.run(os.getenv("TOKEN"))
